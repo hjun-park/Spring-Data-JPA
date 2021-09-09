@@ -17,6 +17,10 @@ public class Member {
 	private String username;
 	private int age;
 
+	// >> 20. LazyLoading
+	// Member 객체를 조회 시에 team 객체를 바로 조회하지는 않는다.
+	// 프록시 객체를 이용해서 가짜 객체로 team을 조회 해 놓는다.
+	// team 객체 데이터를 직접 사용하는 시점에 그 때서 조회 위한 SQL이 나가는 방식
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "team_id")
 	private Team team;
@@ -25,9 +29,8 @@ public class Member {
 	// JPA가 프록시 해서 강제로 객체 만들어야하는데 private로 하면 만들지 못함
 	// 그래서 protected 까지 열어준다.
 	// NOARGS로 대체 가능
-//	protected Member() {
-//	}
-
+	//	protected Member() {
+	//	}
 
 	public Member(String username, int age) {
 		this.username = username;
