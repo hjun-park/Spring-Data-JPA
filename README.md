@@ -5,3 +5,5 @@ https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%8D%B0%EC%9D%B4%E
 <br />
 
 H2 데이터베이스
+
+'확장기능' 이후 내용 반영 X

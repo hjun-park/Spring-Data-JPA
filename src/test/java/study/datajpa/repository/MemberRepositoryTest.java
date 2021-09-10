@@ -332,4 +332,11 @@ class MemberRepositoryTest {
 	}
 
 
+	// >> 31. 사용자 정의 레포지토리 테스트
+	@Test
+	public void callCustom() {
+		List<Member> result = memberRepository.findMemberCustom();
+	}
+
+
 }

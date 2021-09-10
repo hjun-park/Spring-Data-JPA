@@ -20,7 +20,11 @@ import java.util.Optional;
 // 알아서 구현체를 자동으로 만들어서 인젝션을 해준다.
 // 그래서 안에 내용이 없어도 된다.
 // 여기는 @Repository가 없어도 인터페이스 인젝션을 알아서 해준다.
-public interface MemberRepository extends JpaRepository<Member, Long> {
+// >> 30. 사용자 정의 레포지토리 구현
+// >> MemberRepository도 인터페이스, MemberRepositoryCustom도 인터페이스인데,
+// >> MemberRepositoryCustom 인터페이스 내의 함수를 실행하면 MemberRepositoryImpl 클래스 멤버함수 실행됨
+// >> 자바에서 지원해 주는 기능은 아니고 스프링 데이터 JPA에서 엮어서 실행해주는 기능
+public interface MemberRepository extends JpaRepository<Member, Long>, MemberRepositoryCustom {
 
 	// >> 09. 메소드 이름으로 쿼리 생성
 	// 관례: UsernameAndAge를 쓰게되면 and 조건으로 바뀜
@@ -106,6 +110,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 	// >> 28. Lock - db에서 select 할 때 다른 애들이 손대지 못하도록 lock을 걸 수 있다.
 	@Lock(LockModeType.PESSIMISTIC_WRITE)
 	List<Member> findLockByUsername(String username);
+
 
 
 
